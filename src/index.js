@@ -67,6 +67,8 @@ class Game extends React.Component {
       history: history.concat([{
         squares: squares
       }]),
+      clickedCol: i%3 + 1,
+      clickedRow: Math.trunc(i/3) + 1,
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
@@ -89,7 +91,7 @@ class Game extends React.Component {
       if (move === this.state.stepNumber) {
         return (
           <li key = {move}>
-            <button onClick = {() => this.jumpTo(move)} style={{fontWeight: "bold"}}> {desc} </button>
+            ({this.state.clickedCol},{this.state.clickedRow})<button onClick = {() => this.jumpTo(move)} style={{fontWeight: "bold"}}> {desc} </button>
           </li>
         );
       }
